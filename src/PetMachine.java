@@ -62,12 +62,13 @@ public class PetMachine {
             return ;
         }
         this.pet = pet;
+         System.out.println("O pet " + pet.getName() + " foi colocado na máquina");
     }
     
     public void removePet(){
         this.clean = this.pet.isClean();
 
-        System.out.println("O pet " + this.pet.getName() + "esta limpo.");
+        System.out.println("O pet " + this.pet.getName() + " foi tirado da máquina.");
 
         this.pet = null;
     }

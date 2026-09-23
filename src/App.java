@@ -6,8 +6,8 @@ public class App {
     private final static PetMachine petMachine = new PetMachine();
     public static void main(String[] args) {
         
-        
-        var option = -1;    
+        scanner.useDelimiter("\\n");
+        var option = -1;        
 
         do{
             System.out.println("=== Escolha uma das opções: ===");
@@ -25,14 +25,40 @@ public class App {
             option = scanner.nextInt(); 
             
             switch (option) {
+                case 1 -> petMachine.takeAShower();
+                case 2 -> setShampoo();
+                case 3 -> setWater();
+                case 4 -> verifyWater();
+                case 5 -> verifyShampoo();
                 case 6 -> checkIfHasPetInMachine(); 
                 case 7 -> setPetInPetMachine();
                 case 8 -> petMachine.removePet();
                 case 9 -> petMachine.wash();
-            
+                case 0 -> System.exit(0);
+                default -> System.out.println("Opção Inválida");
             }
 
-        } while (option != 0);
+        } while (true);
+    }
+
+    private static void setWater(){
+        System.out.println("Tentando colocar água na máquina");
+        petMachine.addWater();
+    }
+
+    private static void setShampoo(){
+        System.out.println("Tentando colocar shampoo na máquina");
+        petMachine.addShampoo();
+    }
+
+    private static void verifyWater() {
+        var amount = petMachine.getWater();
+        System.out.println("A Máquina está no momento com " + amount + " litro(s) de água");
+    }
+
+    private static void verifyShampoo() {
+        var amount = petMachine.getShampoo();
+        System.out.println("A Máquina está no momento com " + amount + " litro(s) de shampoo");
     }
 
     private static void checkIfHasPetInMachine() {
@@ -50,7 +76,6 @@ public class App {
         var pet = new Pet(name);
         petMachine.setPet(pet);
 
-        System.out.println("O pet " + pet.getName() + " foi colocado na máquina");
 
     }
 
